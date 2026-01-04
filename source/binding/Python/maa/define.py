@@ -641,6 +641,9 @@ class ActionEnum(StrEnum):
     Click = "Click"
     LongPress = "LongPress"
     Swipe = "Swipe"
+    TouchDown = "TouchDown"
+    TouchMove = "TouchMove"
+    TouchUp = "TouchUp"
     MultiSwipe = "MultiSwipe"
     ClickKey = "ClickKey"
     LongPressKey = "LongPressKey"
@@ -759,6 +762,25 @@ class SwipeActionResult:
 
 
 @dataclass
+class TouchDownActionResult:
+    contact: int
+    point: Point
+    pressure: int
+
+
+@dataclass
+class TouchMoveActionResult:
+    contact: int
+    point: Point
+    pressure: int
+
+
+@dataclass
+class TouchUpActionResult:
+    contact: int
+
+
+@dataclass
 class MultiSwipeActionResult:
     swipes: List[SwipeActionResult]
 
@@ -805,6 +827,9 @@ ActionResult = Union[
     LongPressActionResult,
     SwipeActionResult,
     MultiSwipeActionResult,
+    TouchDownActionResult,
+    TouchMoveActionResult,
+    TouchUpActionResult,
     ClickKeyActionResult,
     LongPressKeyActionResult,
     KeyDownActionResult,
@@ -821,6 +846,9 @@ ActionResultDict = {
     ActionEnum.LongPress: LongPressActionResult,
     ActionEnum.Swipe: SwipeActionResult,
     ActionEnum.MultiSwipe: MultiSwipeActionResult,
+    ActionEnum.TouchDown: TouchDownActionResult,
+    ActionEnum.TouchMove: TouchMoveActionResult,
+    ActionEnum.TouchUp: TouchUpActionResult,
     ActionEnum.ClickKey: ClickKeyActionResult,
     ActionEnum.LongPressKey: LongPressKeyActionResult,
     ActionEnum.KeyDown: KeyDownActionResult,
