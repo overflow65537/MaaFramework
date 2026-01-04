@@ -644,6 +644,8 @@ class ActionEnum(StrEnum):
     MultiSwipe = "MultiSwipe"
     ClickKey = "ClickKey"
     LongPressKey = "LongPressKey"
+    KeyDown = "KeyDown"
+    KeyUp = "KeyUp"
     InputText = "InputText"
     StartApp = "StartApp"
     StopApp = "StopApp"
@@ -773,6 +775,16 @@ class LongPressKeyActionResult:
 
 
 @dataclass
+class KeyDownActionResult:
+    keycode: int
+
+
+@dataclass
+class KeyUpActionResult:
+    keycode: int
+
+
+@dataclass
 class InputTextActionResult:
     text: str
 
@@ -795,6 +807,8 @@ ActionResult = Union[
     MultiSwipeActionResult,
     ClickKeyActionResult,
     LongPressKeyActionResult,
+    KeyDownActionResult,
+    KeyUpActionResult,
     InputTextActionResult,
     AppActionResult,
     ScrollActionResult,
@@ -809,6 +823,8 @@ ActionResultDict = {
     ActionEnum.MultiSwipe: MultiSwipeActionResult,
     ActionEnum.ClickKey: ClickKeyActionResult,
     ActionEnum.LongPressKey: LongPressKeyActionResult,
+    ActionEnum.KeyDown: KeyDownActionResult,
+    ActionEnum.KeyUp: KeyUpActionResult,
     ActionEnum.InputText: InputTextActionResult,
     ActionEnum.StartApp: AppActionResult,
     ActionEnum.StopApp: AppActionResult,
