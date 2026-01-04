@@ -633,6 +633,8 @@ class AlgorithmEnum(StrEnum):
     OCR = "OCR"
     NeuralNetworkClassify = "NeuralNetworkClassify"
     NeuralNetworkDetect = "NeuralNetworkDetect"
+    And = "And"
+    Or = "Or"
     Custom = "Custom"
 
 
@@ -695,6 +697,10 @@ NeuralNetworkClassifyResult = NeuralNetworkResult
 NeuralNetworkDetectResult = NeuralNetworkResult
 
 
+AndResult = BoxAndScoreResult
+OrResult = BoxAndScoreResult
+
+
 @dataclass
 class CustomRecognitionResult:
     box: Rect
@@ -708,6 +714,8 @@ RecognitionResult = Union[
     OCRResult,
     NeuralNetworkClassifyResult,
     NeuralNetworkDetectResult,
+    AndResult,
+    OrResult,
     CustomRecognitionResult,
 ]
 
@@ -719,6 +727,8 @@ AlgorithmResultDict = {
     AlgorithmEnum.OCR: OCRResult,
     AlgorithmEnum.NeuralNetworkClassify: NeuralNetworkClassifyResult,
     AlgorithmEnum.NeuralNetworkDetect: NeuralNetworkDetectResult,
+    AlgorithmEnum.And: AndResult,
+    AlgorithmEnum.Or: OrResult,
     AlgorithmEnum.Custom: CustomRecognitionResult,
 }
 
