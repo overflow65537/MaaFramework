@@ -28,7 +28,7 @@ constexpr bool IsOptionalParam<OptionalParam<T>> = true;
 template <typename Inherit>
 struct NativeObject
 {
-    Inherit* impl {};
+    Inherit* impl { };
 
     operator Inherit*() const { return impl; }
 
@@ -176,7 +176,7 @@ struct JSConvert<nullptr_t>
     static nullptr_t from_value(ValueType val)
     {
         if (val.IsNull()) {
-            return {};
+            return { };
         }
         throw MaaError { std::format("expect {}, got {}", name(), DumpValue(val)) };
     }
@@ -192,7 +192,7 @@ struct JSConvert<std::monostate>
     static std::monostate from_value(ValueType val)
     {
         if (val.IsUndefined()) {
-            return {};
+            return { };
         }
         throw MaaError { std::format("expect {}, got {}", name(), DumpValue(val)) };
     }

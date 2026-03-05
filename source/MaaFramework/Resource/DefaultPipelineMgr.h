@@ -27,7 +27,7 @@ public:
     {
         auto iter = recognition_param_.find(type);
         if (iter == recognition_param_.end()) {
-            return {};
+            return { };
         }
         return std::get<RecoParam>(iter->second);
     }
@@ -37,7 +37,7 @@ public:
     {
         auto iter = action_param_.find(type);
         if (iter == action_param_.end()) {
-            return {};
+            return { };
         }
         return std::get<ActParam>(iter->second);
     }
